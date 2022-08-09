@@ -2,10 +2,17 @@
 #include <iostream>
 #include <string>
 
+
 using namespace I;
 using namespace std;
 
-void Item::test()
+Item::Item(std::string nameInit, int valInit, int damageInit)
 {
-    cout << "this is the test func\n" ;
+    name = nameInit;
+    val = valInit;
+}
+
+Item::Weapon(int damageInit)
+{
+    damage = damageInit;
 }

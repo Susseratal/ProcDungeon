@@ -1,18 +1,21 @@
 # Variables to control makefile operation
-CC = g++
+SOURCES:=$(wildcard *.cpp)
+DEPS:=$(SOURCES:.cpp=.d)
+OBJS:=$(SOURCES:.cpp=.o)
+CXX = g++
 CFLAGS = -g -Wall
-TARGET = dungeon
+EXE = dungeon
 
 # Targets
-all: $(TARGET)
+default: $(EXE)
 
-$(TARGET): main.o item.o
-	$(CC) $(CFLAGS) -o $(TARGET) main.o item.o
+$(EXE): $(OBJS)
+	$(CXX) -o $@ $^
 
-main.o: main.cpp item.h
-	$(CC) $(CFLAGS) -c main.cpp
+%.d: %.cpp
+	$(CXX) -MM -MF $@ $<
 
-item.o: item.h
+%.o: %.cpp
+	$(CXX) -c $<
 
-clean:
-	@rm *.o $(TARGET)
+include $(DEPS)
