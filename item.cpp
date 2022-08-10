@@ -12,7 +12,9 @@ Item::Item(std::string nameInit, int valInit, int damageInit)
     val = valInit;
 }
 
+/*
 Item::Weapon(int damageInit)
 {
     damage = damageInit;
 }
+*/

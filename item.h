@@ -18,6 +18,7 @@ namespace I
             Item(std::string nameInit, int valInit, int damageInit);
     };
 
+    /*
     class Treasure: public Item
     {
         // men
@@ -30,4 +31,5 @@ namespace I
 
             // Weapon(int damageInit);
     };
+    */
 }

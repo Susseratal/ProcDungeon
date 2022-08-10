@@ -6,6 +6,7 @@ using namespace I;
 
 namespace W
 {
+    /*
     class Melee: public Weapon
     {};
 
@@ -14,4 +15,5 @@ namespace W
 
     class Spell: public Weapon
     {};
+    */
 }

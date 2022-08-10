@@ -3,19 +3,37 @@ SOURCES:=$(wildcard *.cpp)
 DEPS:=$(SOURCES:.cpp=.d)
 OBJS:=$(SOURCES:.cpp=.o)
 CXX = g++
-CFLAGS = -g -Wall
+# CXXFLAGS = -Ilibs
+CXXFLAGS = -g -Wall
 EXE = dungeon
 
 # Targets
 default: $(EXE)
+	@ls --color
 
 $(EXE): $(OBJS)
-	$(CXX) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 %.d: %.cpp
-	$(CXX) -MM -MF $@ $<
+	$(CXX) $(CXXFLAGS) -MM -MF $@ $<
 
 %.o: %.cpp
-	$(CXX) -c $<
+	$(CXX) $(CXXFLAGS) -c $<
+
+clean:
+	rm *.d *.o $(EXE)
+	@ls --color
+
+install:
+	@echo compiling...
+	make
+	sudo mv dungeon /usr/bin
+	@rm *.o *.d
+	@ls --color
+
+uninstall:
+	@echo uninstalling...
+	sudo rm /usr/bin/dungeon
+	@ls --color
 
 include $(DEPS)
